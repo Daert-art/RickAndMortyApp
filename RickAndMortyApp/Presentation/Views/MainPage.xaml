@@ -1,0 +1,35 @@
+﻿<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:RickAndMortyApp.Presentation.ViewModels"
+             x:Class="RickAndMortyApp.Presentation.Views.MainPage">
+
+    <StackLayout Padding="10">
+        <CollectionView ItemsSource="{Binding Characters}"
+                        VerticalOptions="FillAndExpand">
+            <CollectionView.ItemsLayout>
+                <GridItemsLayout Orientation="Vertical" Span="3" />
+            </CollectionView.ItemsLayout>
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Frame Margin="5" Padding="10" CornerRadius="10" BorderColor="Gray" HasShadow="True">
+                        <HorizontalStackLayout>
+                            <Image Source="{Binding Image}" HeightRequest="100" WidthRequest="100"
+                                   Aspect="AspectFill" />
+                            <VerticalStackLayout Padding="10">
+                                <Label Text="{Binding Name}" FontSize="Large" FontAttributes="Bold" />
+                                <Label Text="{Binding Status}" FontSize="Medium" />
+                                <Label Text="{Binding Species}" FontSize="Medium" />
+                            </VerticalStackLayout>
+                        </HorizontalStackLayout>
+                    </Frame>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <StackLayout Orientation="Horizontal" HorizontalOptions="Center" Padding="10">
+            <Button Text="Previous" Command="{Binding GoToPreviousPageCommand}" IsVisible="{Binding IsPreviousPageVisible}" />
+            <Button Text="Next" Command="{Binding GoToNextPageCommand}" IsVisible="{Binding IsNextPageVisible}" />
+        </StackLayout>
+    </StackLayout>
+</ContentPage>

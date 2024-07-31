@@ -1,0 +1,17 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:vm="clr-namespace:RickAndMortyApp.Presentation.ViewModels"
+             x:Class="RickAndMortyApp.Presentation.Views.CharacterDetailPage">
+
+    <StackLayout Padding="10">
+        <Label Text="{Binding Character.Name}" FontSize="24" FontAttributes="Bold" />
+        <Image Source="{Binding Character.Image}" HeightRequest="200" WidthRequest="200" />
+        <Label Text="{Binding Character.Status}" FontSize="18" />
+        <Label Text="{Binding Character.Species}" FontSize="18" />
+        <Label Text="{Binding Character.Gender}" FontSize="18" />
+        <Label Text="{Binding Character.Origin}" FontSize="18" />
+        <Label Text="{Binding Character.Location}" FontSize="18" />
+        <Label Text="{Binding Character.Episode}" FontSize="18" />
+    </StackLayout>
+</ContentPage>
