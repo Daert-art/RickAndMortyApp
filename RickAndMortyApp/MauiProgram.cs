@@ -1,5 +1,4 @@
 ﻿using Microsoft.Extensions.Logging;
-using RickAndMortyApp.Data.Source.Remote.Api;
 using RickAndMortyApp.Domain.Repository;
 using RickAndMortyApp.Presentation.ViewModels;
 using RickAndMortyApp.Presentation.Views;
@@ -20,7 +19,7 @@ namespace RickAndMortyApp
                 });
 
 #if DEBUG
-    		builder.Logging.AddDebug();
+            builder.Logging.AddDebug();
 #endif
             builder.Services.AddSingleton<ICharacterRepository, CharacterRepository>();
             builder.Services.AddTransient<MainPageViewModel>();

@@ -1,9 +1,7 @@
 ﻿using RickAndMortyApp.Domain.Entity;
 using RickAndMortyApp.Domain.Repository;
 using System.Collections.ObjectModel;
-using System.Threading.Tasks;
 using System.Windows.Input;
-using Microsoft.Maui.Controls;
 
 namespace RickAndMortyApp.Presentation.ViewModels
 {
@@ -126,8 +124,11 @@ namespace RickAndMortyApp.Presentation.ViewModels
 
         private async Task ShowCharacterDetails(CharacterEntity character)
         {
-            // Открыть страницу с полным описанием персонажа
-            await Shell.Current.GoToAsync($"characterdetail?characterId={character.Id}");
+            if (character == null)
+                throw new ArgumentNullException(nameof(character));
+
+            var navigationParameter = $"characterdetail?characterId={character.Id}";
+            await Shell.Current.GoToAsync(navigationParameter);
         }
     }
 }

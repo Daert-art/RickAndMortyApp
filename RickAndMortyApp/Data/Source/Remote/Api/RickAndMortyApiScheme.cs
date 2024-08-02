@@ -1,10 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
-
-namespace RickAndMortyApp.Data.Source.Remote.Api
+﻿namespace RickAndMortyApp.Data.Source.Remote.Api
 {
     public sealed class RickAndMortyApiScheme
     {

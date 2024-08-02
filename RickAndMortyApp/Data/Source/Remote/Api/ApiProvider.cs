@@ -64,32 +64,36 @@ namespace RickAndMortyApp.Data.Source.Remote.Api
             try
             {
                 string requestUrl = _rickAndMortyApiScheme.GetCharacterById(id);
-                using HttpResponseMessage message = _httpClient.GetAsync(requestUrl).Result;
-                if (message.IsSuccessStatusCode)
+                using HttpResponseMessage response = await _httpClient.GetAsync(requestUrl);
+
+                if (response.IsSuccessStatusCode)
                 {
-                    string content = await message.Content.ReadAsStringAsync();
+                    string content = await response.Content.ReadAsStringAsync();
                     JObject json = JObject.Parse(content);
-                    JArray results = (JArray)json["results"];
-                    CharacterModel characterModel = new CharacterModel();
-                    if (results == null)
+
+                    // Проверка, содержит ли ответ объект, а не массив
+                    if (json["results"] != null)
                     {
-                        throw new Exception("Result is null");
+                        JArray results = (JArray)json["results"];
+                        if (results.Count > 0)
+                        {
+                            return results[0].ToObject<CharacterModel>();
+                        }
                     }
                     else
                     {
-                        characterModel = results.ToObject<CharacterModel>();
-                        return characterModel;
+                        return json.ToObject<CharacterModel>();
                     }
+
+                    throw new Exception("Character not found in the results.");
                 }
                 else
                 {
-                    throw new Exception("Error: " + message.StatusCode);
+                    throw new Exception("Error: " + response.StatusCode);
                 }
-
             }
             catch (HttpRequestException e)
             {
-
                 throw new Exception(e.Message);
             }
         }

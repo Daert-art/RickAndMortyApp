@@ -1,19 +1,28 @@
 using RickAndMortyApp.Presentation.ViewModels;
 
-namespace RickAndMortyApp.Presentation.Views;
-
-public partial class CharacterDetailPage : ContentPage
+namespace RickAndMortyApp.Presentation.Views
 {
-	public CharacterDetailPage(CharacterDetailViewModel viewModel)
-	{
-		InitializeComponent();
-		BindingContext = viewModel;
-	}
-	public CharacterDetailPage(int characterId)
-	{
-        InitializeComponent();
-        var viewModel = (CharacterDetailViewModel)App.ServiceProvider.GetRequiredService<CharacterDetailViewModel>();
-        BindingContext = viewModel;
-        viewModel.LoadCharacter(characterId);
+    [QueryProperty(nameof(CharacterId), "characterId")]
+    public partial class CharacterDetailPage : ContentPage
+    {
+        public int CharacterId { get; set; }
+        public CharacterDetailPage(CharacterDetailViewModel viewModel)
+        {
+            InitializeComponent();
+            this.BindingContext = viewModel;
+            Console.WriteLine("CharacterDetailPage constructor called");
+        }
+
+        protected override async void OnAppearing()
+        {
+            base.OnAppearing();
+            Console.WriteLine($"CharacterDetailPage OnAppearing called with CharacterId: {CharacterId}");
+
+            var viewModel = (CharacterDetailViewModel)BindingContext;
+            if (viewModel != null)
+            {
+                await viewModel.LoadCharacter(CharacterId);
+            }
+        }
     }
 }

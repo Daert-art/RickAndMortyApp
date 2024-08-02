@@ -8,7 +8,7 @@ namespace RickAndMortyApp
         {
             InitializeComponent();
 
-            Routing.RegisterRoute(nameof(CharacterDetailPage), typeof(CharacterDetailPage));
+            Routing.RegisterRoute("characterdetail", typeof(CharacterDetailPage));
         }
     }
 }

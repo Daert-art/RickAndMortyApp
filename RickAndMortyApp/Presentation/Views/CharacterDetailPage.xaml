@@ -1,17 +1,83 @@
-<?xml version="1.0" encoding="utf-8" ?>
 <ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              xmlns:vm="clr-namespace:RickAndMortyApp.Presentation.ViewModels"
-             x:Class="RickAndMortyApp.Presentation.Views.CharacterDetailPage">
+             x:Class="RickAndMortyApp.Presentation.Views.CharacterDetailPage"
+             BackgroundColor="White">
 
-    <StackLayout Padding="10">
-        <Label Text="{Binding Character.Name}" FontSize="24" FontAttributes="Bold" />
-        <Image Source="{Binding Character.Image}" HeightRequest="200" WidthRequest="200" />
-        <Label Text="{Binding Character.Status}" FontSize="18" />
-        <Label Text="{Binding Character.Species}" FontSize="18" />
-        <Label Text="{Binding Character.Gender}" FontSize="18" />
-        <Label Text="{Binding Character.Origin}" FontSize="18" />
-        <Label Text="{Binding Character.Location}" FontSize="18" />
-        <Label Text="{Binding Character.Episode}" FontSize="18" />
-    </StackLayout>
+    <ScrollView Padding="10">
+        <StackLayout Spacing="10">
+            <!-- Character Name -->
+            <Label Text="{Binding Character.Name}"
+                   FontSize="32"
+                   FontAttributes="Bold"
+                   HorizontalOptions="Center"
+                   TextColor="Black" />
+
+            <!-- Character Image -->
+            <Image Source="{Binding Character.Image}"
+                   Aspect="AspectFill"
+                   HeightRequest="300"
+                   WidthRequest="300"
+                   HorizontalOptions="Center" />
+
+            <!-- Character Description -->
+            <StackLayout Padding="10" BackgroundColor="#F0F0F0">
+                <Label Text="Description"
+                       FontSize="24"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       TextColor="Black" />
+
+                <Label Text="Status:"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       TextColor="DarkGray" />
+                <Label Text="{Binding Character.Status}"
+                       FontSize="18"
+                       HorizontalOptions="Center"
+                       TextColor="Black" />
+
+                <Label Text="Species:"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       TextColor="DarkGray" />
+                <Label Text="{Binding Character.Species}"
+                       FontSize="18"
+                       HorizontalOptions="Center"
+                       TextColor="Black" />
+
+                <Label Text="Gender:"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       TextColor="DarkGray" />
+                <Label Text="{Binding Character.Gender}"
+                       FontSize="18"
+                       HorizontalOptions="Center"
+                       TextColor="Black" />
+
+                <Label Text="Last known location:"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       TextColor="DarkGray" />
+                <Label Text="{Binding Character.Location.Name}"
+                       FontSize="18"
+                       HorizontalOptions="Center"
+                       TextColor="Black" />
+
+                <Label Text="First seen in:"
+                       FontSize="18"
+                       FontAttributes="Bold"
+                       HorizontalOptions="Center"
+                       TextColor="DarkGray" />
+                <Label Text="{Binding Character.Origin.Name}"
+                       FontSize="18"
+                       HorizontalOptions="Center"
+                       TextColor="Black" />                
+            </StackLayout>
+        </StackLayout>
+    </ScrollView>
 </ContentPage>

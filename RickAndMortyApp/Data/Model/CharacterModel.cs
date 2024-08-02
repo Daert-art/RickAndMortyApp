@@ -1,9 +1,4 @@
 ﻿using RickAndMortyApp.Domain.Entity;
-using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 using Location = RickAndMortyApp.Domain.Entity.Location;
 
 namespace RickAndMortyApp.Data.Model
@@ -12,7 +7,7 @@ namespace RickAndMortyApp.Data.Model
     {
         public int Id { get; set; }
         public string? Name { get; set; }
-        public string? Status {  get; set; }
+        public string? Status { get; set; }
         public string? Species { get; set; }
         public string? Type { get; set; }
         public string? Gender { get; set; }
@@ -21,10 +16,8 @@ namespace RickAndMortyApp.Data.Model
         public string? Image { get; set; }
         public List<string>? Episode { get; set; }
 
-        public CharacterModel()
-        {
+        public CharacterModel() { }
 
-        }
         public CharacterModel(int id, string? name, string? status, string? species,
             string? type, string? gender, Origin? origin, Location? location, string? image, List<string>? episode)
         {
@@ -39,11 +32,11 @@ namespace RickAndMortyApp.Data.Model
             Image = image;
             Episode = episode;
         }
+
         public override string ToString()
         {
             return $"Id: {Id}, Name: {Name}, Status: {Status}, Species: {Species}, Type: {Type}, " +
                 $"Gender: {Gender}, Origin: {Origin}, Location: {Location}, Image: {Image}, Episode: {Episode}";
         }
-
     }
 }

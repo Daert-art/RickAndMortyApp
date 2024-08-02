@@ -5,9 +5,9 @@ namespace RickAndMortyApp.Domain.Repository
 {
     public sealed class CharacterRepository : ICharacterRepository
     {
-        private ApiProvider _apiProvider {  get; set; }
+        private ApiProvider _apiProvider { get; set; }
 
-        public CharacterRepository() 
+        public CharacterRepository()
         {
             _apiProvider = new ApiProvider();
         }
