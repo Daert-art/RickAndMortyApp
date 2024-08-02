@@ -50,7 +50,7 @@ namespace RickAndMortyApp.Presentation.ViewModels
                 return;
 
             _isLoading = true;
-            _currentPage = 1; // Сброс страницы при первой загрузке
+            _currentPage = 1; 
 
             var characters = await _characterRepository.GetAllCharactersByPage(_currentPage);
             Characters.Clear();
@@ -60,7 +60,7 @@ namespace RickAndMortyApp.Presentation.ViewModels
             }
 
             _isLoading = false;
-            HasMorePages = characters.Count > 0; // Если данных больше нет, то пагинация закончена
+            HasMorePages = characters.Count > 0; 
         }
 
         private async Task LoadMoreCharacters()
@@ -119,7 +119,7 @@ namespace RickAndMortyApp.Presentation.ViewModels
             }
 
             _isLoading = false;
-            HasMorePages = characters.Count > 0 || _currentPage > 1; // Если данных больше нет, то пагинация закончена
+            HasMorePages = characters.Count > 0 || _currentPage > 1;
         }
 
         private async Task ShowCharacterDetails(CharacterEntity character)
